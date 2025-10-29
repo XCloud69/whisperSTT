@@ -88,9 +88,9 @@ if len(sys.argv) < 2:
 input_file = sys.argv[1]
 # ====== Configuration ======
 file_name = os.path.basename(input_file)
-model_path = "/home/rashad/Desktop/python/whisperModels/faster-whisper-tiny"  # edit
+model_path = "./whisperModels/faster-whisper-tiny"  # edit
 device = detect_device()
 sample_rate = 16000
-save_path = "/home/rashad/Desktop/"  # edit
+save_path = "."  # edit
 file = save_path + "/" + file_name + ".md"
 # ===========================
