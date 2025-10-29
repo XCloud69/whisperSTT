@@ -16,7 +16,7 @@ echo "Upgrading pip..."
 pip install --upgrade pip
 
 echo "Installing Python packages..."
-pip install faster-whisper numpy nvidia-cublas-cu12 nvidia-cudnn-cu12
+pip install faster-whisper numpy nvidia-cublas-cu12 nvidia-cudnn-cu12 watchdog pyinstaller
 
 echo ""
 echo "✓ Setup complete!"
