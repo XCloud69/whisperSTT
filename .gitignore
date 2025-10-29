@@ -1,1 +1,21 @@
-transcription.md
+# Virtual environment
+venv/
+env/
+
+# Python cache
+src/__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Output files
+*.md
+*.txt
+
+# Model files (they're large)
+whisperModels/
+
+# OS files
+.DS_Store
+Thumbs.db

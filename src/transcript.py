@@ -1,29 +1,8 @@
-import subprocess
 import numpy as np
 from faster_whisper import WhisperModel
-import sys
 import time
+from Configuration import *
 
-
-def detect_device():
-    try:
-        subprocess.check_output(["nvidia-smi"])
-        return "cuda"
-    except subprocess.CalledProcessError:
-        return "cpu"
-
-
-# ====== Configuration ======
-model_path = "/home/rashad/Desktop/python/whisperModels/faster-whisper-tiny"
-device = "cpu"
-sample_rate = 16000
-# ===========================
-
-if len(sys.argv) < 2:
-    print("Usage: python transcribe_file.py <audio_or_video_file>")
-    sys.exit(1)
-
-input_file = sys.argv[1]
 
 # begin timing
 begin = time.perf_counter()
@@ -68,9 +47,11 @@ for segment in segments:
 print("\n---")
 
 # Write to file
-with open("transcription.md", "w", encoding="utf-8") as f:
+with open(file, "w", encoding="utf-8") as f:
     for s in segments:
-        start_time = getattr(s, "start", None) if not isinstance(s, dict) else s.get("start")
+        start_time = (
+            getattr(s, "start", None) if not isinstance(s, dict) else s.get("start")
+        )
         end_time = getattr(s, "end", None) if not isinstance(s, dict) else s.get("end")
         text = (
             s.get("text", "") if isinstance(s, dict) else getattr(s, "text", "")
@@ -84,4 +65,4 @@ with open("transcription.md", "w", encoding="utf-8") as f:
 # End timing
 final = time.perf_counter()
 
-print(f"Execution time: {(final - begin)/60:.2f} minutes")
+print(f"Execution time: {(final - begin) / 60:.2f} minutes")
