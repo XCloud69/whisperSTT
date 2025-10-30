@@ -15,6 +15,7 @@ __pycache__/
 
 # Model files (they're large)
 whisperModels/
+path.json
 
 # OS files
 .DS_Store
