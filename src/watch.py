@@ -3,11 +3,16 @@ import subprocess
 import os
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import json
 
 # === CONFIGURATION ===
-WATCH_DIR = "/home/rashad/Desktop/input"  # directory to watch
-TRANSCRIPT_SCRIPT = "/home/rashad/Desktop/python/whisperTest/src/transcript.py"
-PYTHON_EXEC = "/home/rashad/Desktop/python/whisperTest/venv/bin/python"  # path to your venv python
+with open("path.json", "r") as f:
+    config_data = json.load(f)
+
+
+WATCH_DIR = config_data["WATCH_DIR"]  # directory to watch
+TRANSCRIPT_SCRIPT = config_data["TRANSCRIPT_SCRIPT"]
+PYTHON_EXEC = config_data["PYTHON_EXEC"]  # path to your venv python
 # =====================
 
 
