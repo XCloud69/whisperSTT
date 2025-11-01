@@ -4,7 +4,8 @@
 set -e
 
 echo "Installing FFmpeg..."
-sudo pacman -S --needed ffmpeg cudnn
+sudo pacman -Syyu
+sudo pacman -S --needed ffmpeg cuda cudnn
 
 echo "Creating virtual environment..."
 python3 -m venv venv
