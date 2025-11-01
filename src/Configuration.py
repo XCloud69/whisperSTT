@@ -2,6 +2,7 @@ from sys import argv, exit
 import subprocess
 from os import path
 import platform
+from json import load
 
 
 def detect_device():
@@ -69,10 +70,12 @@ if len(argv) < 2:
 
 input_file = argv[1]
 # ====== Configuration ======
+with open("path.json", "r") as f:
+    config_data = load(f)
 file_name = path.basename(input_file)
-model_path = "./whisperModels/faster-whisper-tiny"
+model_path = config_data["whisper_model"]
 device = detect_device()
 sample_rate = 16000
-save_path = "."
+save_path = config_data["save_path"]
 file = save_path + "/" + file_name + ".md"
 # ===========================
